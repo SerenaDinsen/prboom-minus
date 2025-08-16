@@ -127,7 +127,7 @@ int (P_Random)(pr_class_t pr_class
   if (demo_insurance)
     boom += (gametic-basetic)*7;
 
-  return 0;
+  return boom & 255;
 }
 
 // Initialize all the seeds
