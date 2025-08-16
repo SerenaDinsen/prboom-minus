@@ -896,7 +896,7 @@ void A_BFGSpray(mobj_t *mo)
 {
   int i;
 
-  for (i=0 ; i<40 ; i++)  // offset angles from its attack angle
+  for (i=0 ; i<360 ; i++)  // offset angles from its attack angle
     {
       int j, damage;
       angle_t an = mo->angle *i;
