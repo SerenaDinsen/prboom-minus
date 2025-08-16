@@ -899,15 +899,15 @@ void A_BFGSpray(mobj_t *mo)
   for (i=0 ; i<40 ; i++)  // offset angles from its attack angle
     {
       int j, damage;
-      angle_t an = mo->angle - ANG90/2 + ANG90/40*i;
+      angle_t an = mo->angle *i;
 
       // mo->target is the originator (player) of the missile
 
       // killough 8/2/98: make autoaiming prefer enemies
       if (!mbf_features ||
-         (P_AimLineAttack(mo->target, an, 16*64*FRACUNIT, MF_FRIEND),
+         (P_AimLineAttack(mo, an, 16*64*FRACUNIT, MF_FRIEND),
          !linetarget))
-        P_AimLineAttack(mo->target, an, 16*64*FRACUNIT, 0);
+        P_AimLineAttack(mo, an, 16*64*FRACUNIT, 0);
 
       if (!linetarget)
         continue;
@@ -918,7 +918,7 @@ void A_BFGSpray(mobj_t *mo)
       for (damage=j=0; j<15; j++)
         damage += (P_Random(pr_bfg)&7) + 1;
 
-      P_DamageMobj(linetarget, mo->target, mo->target, damage);
+      P_DamageMobj(linetarget, mo, mo, damage);
     }
 }
 
